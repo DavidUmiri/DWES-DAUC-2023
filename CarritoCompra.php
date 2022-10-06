@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <?php
     if (!isset($_REQUEST["platanos"])) {
         $_REQUEST["platanos"] = 0;
@@ -19,7 +18,6 @@
         $total = $_REQUEST["compras1"] + $_REQUEST["platanos"];
     }
     ?>
-
     <form action="CarritoCompra.php" method="post">
         <fieldset>
             <legend>Carrito compra</legend>
@@ -35,7 +33,6 @@
             <input type="text" name="platanos" placeholder="0" value="<?php echo "$total"; ?>">
             <input type="submit" name="submit" value="Enviar">
     </form>
-
 </body>
 
 </html>
