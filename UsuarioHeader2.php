@@ -1,9 +1,20 @@
 <?php
 echo "<br>";
 session_start();
+
 echo "Acceso autorizado para: " .  $_SESSION["UsuarioCorrecto"];
 echo "<br>";
 echo "Contraseña actual: " . $_SESSION["ContraseñaCorrecta"];
+echo "<br>";
+echo session_id();
+
+if (!(isset($_SESSION["UsuarioCorrecto"]) || isset($_SESSION["ContraseñaCorrecta"]))) {
+    unset($_SESSION["UsuarioCorrecto"]);
+    unset($_SESSION["ContraseñaCorrecta"]);
+    session_destroy();
+    header("location:UsuarioHeader.php");
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +30,20 @@ echo "Contraseña actual: " . $_SESSION["ContraseñaCorrecta"];
 <body>
     <br>
     <br>
-    <form action="UsuarioHeader.php">
-        <input type="submit" value="VOLVER" />
-    </form>
-    <form action="UsuarioHeader3.php">
-        <input type="submit" value="CONTINUAR" />
+    <form action="UsuarioHeader.php" method="POST">
+        <input type="submit" value="CERRAR SESION" name="cerrar" />
     </form>
 </body>
 
-</html>
-
 <?php
-session_destroy();
+if (isset($_REQUEST['cerrar'])) {
+    session_destroy();
+    unset($_SESSION["UsuarioCorrecto"]);
+    unset($_SESSION["ContraseñaCorrecta"]);
+    session_destroy();
+    header("location:UsuarioHeader.php");
+    die();
+}
 ?>
+
+</html>

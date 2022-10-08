@@ -10,19 +10,27 @@
 
 <?php
 // APELLIDOS Y NOMBRE
-if (isset($_REQUEST['nombre'])) {
+if (isset($_REQUEST['enviar'])) {
     $nombre = $_REQUEST['nombre'];
+    $nombreNuevo = $nombre . $_REQUEST['nombre'];
 } else {
     $nombre = "";
+    $nombreNuevo = $nombre;
+}
+
+if (isset($_REQUEST['enviar'])) {
+    $nombreNuevo = $_REQUEST['nombre'];
+} else {
+    $nombreNuevo = "";
 }
 // DIRECCIÓN
-if (isset($_REQUEST['direccion'])) {
+if (isset($_REQUEST['enviar'])) {
     $direccion = $_REQUEST['direccion'];
 } else {
     $direccion = "";
 }
 // CORREO ELECTRÓNICO
-if (isset($_REQUEST['correo'])) {
+if (isset($_REQUEST['enviar'])) {
     $correo = $_REQUEST['correo'];
 } else {
     $correo = "";
@@ -39,7 +47,7 @@ if (isset($_REQUEST['correo'])) {
         <fieldset>
             <legend>APELLIDOS Y NOMBRE</legend>
             <p>
-                <input style="text-transform: uppercase;" type="text" name="nombre" id="nombre" value="<?php echo $nombre ?>" size="30">
+                <input style="text-transform: uppercase;" type="text" name="nombre" id="nombre" size="30" value="<?php echo $nombre ?>">
             </p>
         </fieldset>
         <!-- DIRECCIÓN -->
@@ -78,7 +86,10 @@ if (isset($_REQUEST['correo'])) {
             <input style="float: right;" type="reset" name="borrar" value="BORRAR">
         </fieldset>
     </form>
-
+    <br>
+    <!-- ALMACENAR NOMBRE ANTERIOR -->
+    <input type="text" name="nombre" value="<?php echo $nombreNuevo ?>" size=" 100">
+    <input name="nombre" type="hidden" value="<? echo $nombreNuevo ?>">
 </body>
 
 </html>

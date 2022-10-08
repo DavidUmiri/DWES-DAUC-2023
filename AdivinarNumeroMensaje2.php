@@ -10,7 +10,7 @@ session_start();
     <title>Resultado</title>
 </head>
 
-<body style="align-items: center;">
+<body style="text-align: center;">
 
     <?php
     // Obtenemos el numero indicado por el jugador en el formulario.
@@ -19,7 +19,7 @@ session_start();
     // Comprobamos si hay almacenado un numero en la sesion
     // o tenemos que inventar uno nuevo.
     if (isset($_SESSION["num_aleatorio"]) == false) {
-        $_SESSION["num_aleatorio"] = rand(1, 100);
+        $_SESSION["num_aleatorio"] = mt_rand(1, 100);
     }
     ?>
 

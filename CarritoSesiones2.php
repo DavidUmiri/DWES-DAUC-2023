@@ -39,7 +39,17 @@ session_start();
 
     <?php
     $_SESSION['cantidad'] = $total;
+    ?>
 
+    <!-- FICHEROS -->
+    <?php
+    $fichero = fopen("FicheroFrutas.txt", 'a');
+
+    if (isset($_REQUEST['añadir'])) {
+        $cantidad = $_REQUEST['cantidad'];
+        fputs($fichero, "$cantidad sandías\n");
+    }
+    fclose($fichero);
     ?>
 </body>
 

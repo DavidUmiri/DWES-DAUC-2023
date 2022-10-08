@@ -8,25 +8,25 @@
     <title>Adivina</title>
 </head>
 
+
 <body>
     <br>
     <br>
-    <center>
-        <p><strong>ADIVINA EL NUMERO</strong></p>
+    <p align="center"><strong>ADIVINA EL NUMERO</strong></p>
 
-        <form action="AdivinarNumeroMensaje2.php" method="POST">
-            <table>
-                <tr align="center">
-                    <td>Adivina un numero entre 1 y 100</td>
-                </tr>
-                <tr align="center">
-                    <td><input type="number" name="form_num" min="1" max="100"></td>
-                </tr>
-                <tr align="center">
-                    <td><input type="submit" value="Comprobar"></td>
-                </tr>
-            </table>
-        </form>
+    <form action="AdivinarNumeroMensaje2.php" method="POST">
+        <table align="center">
+            <tr align="center">
+                <td>Adivina un numero entre 1 y 100</td>
+            </tr>
+            <tr align="center">
+                <td><input type="number" name="form_num" min="1" max="100"></td>
+            </tr>
+            <tr align="center">
+                <td><input type="submit" value="Comprobar"></td>
+            </tr>
+        </table>
+    </form>
 
 </body>
 

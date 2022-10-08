@@ -1,5 +1,4 @@
 <?php
-
 // Abro el fichero.
 $fichero = fopen("FicheroDatos.txt", "w");
 

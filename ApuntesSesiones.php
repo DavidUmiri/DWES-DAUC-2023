@@ -34,3 +34,23 @@ session_destroy();
 
 // Volver a otro sitio.
 header('location: ruta/');
+
+// Metodos de prevencion contra un ataque.
+// Utilizar únicamente cookies para la propagación del identificador de sesión.
+ini_set('session.use_only_cookies', 1);
+
+// Regenerar los identificadores de sesión para sesiones nuevas poniendo una marca en las sesiones.
+session_start();
+
+if (isset($_SESSION['mark']) === false) {
+    session_regenerate_id(true);
+    $_SESSION['mark'] = true;
+}
+
+// Cambiar el identificador de sesión siempre que un usuario cambie su estado (autenticado, registrado, ...).
+if ($user_logged_in === true) {
+    session_regenerate_id(true);
+    $_SESSION['logged'] = true;
+}
+
+// Aviso: es muy importante que sea session_regenerate_id(true); y no session_regenerate_id(); ya que si no eliminamos la sesión antigua, estamos haciendo más fácil los ataques contra la página web al dejar múltiples sesiones válidas abiertas en el servidor.

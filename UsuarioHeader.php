@@ -14,7 +14,7 @@ session_start();
 
 <body>
     <br>
-    <form action="UsuarioHeader.php" method=POST>
+    <form action="UsuarioHeader.php" method=GET>
         <input name="Usuario" type="text" placeholder="Escribe tu usuario">
         <input name="Contraseña" type="text" placeholder="Escribe tu contraseña">
         <input type="submit" value="Enviar">
@@ -23,6 +23,7 @@ session_start();
     <?php
     $_SESSION["UsuarioCorrecto"] = "david";
     $_SESSION["ContraseñaCorrecta"] = "1998";
+
 
     if (isset($_REQUEST["Usuario"], $_REQUEST["Contraseña"])) {
 

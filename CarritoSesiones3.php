@@ -25,6 +25,15 @@ echo "Total de sandías: " . $_SESSION['cantidad'] . " unidades";
     if (!isset($_REQUEST['cerrar'])) {
         session_destroy();
     }
+
+    // Eliminar fichero.
+    $fichero = fopen("FicheroFrutas.txt", 'a');
+
+    if (unlink('FicheroFrutas.txt')) {
+        // Eliminado.
+    } else {
+        // Hubo problemas.
+    }
     ?>
 </body>
 
