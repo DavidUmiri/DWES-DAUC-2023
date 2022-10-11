@@ -41,8 +41,9 @@ session_start();
     $_SESSION['cantidad'] = $total;
     ?>
 
-    <!-- FICHEROS -->
+
     <?php
+    // Creo que el fichero en modo añadir.
     $fichero = fopen("FicheroFrutas.txt", 'a');
 
     if (isset($_REQUEST['añadir'])) {

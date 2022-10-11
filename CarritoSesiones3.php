@@ -26,14 +26,13 @@ echo "Total de sandías: " . $_SESSION['cantidad'] . " unidades";
         session_destroy();
     }
 
-    // Eliminar fichero.
-    $fichero = fopen("FicheroFrutas.txt", 'a');
-
-    if (unlink('FicheroFrutas.txt')) {
-        // Eliminado.
-    } else {
-        // Hubo problemas.
+    // Leemos el fichero.
+    $fichero = fopen("FicheroFrutas.txt", 'r');
+    while (!feof($fichero)) {
+        $linea = fgets($fichero);
+        echo "<br>" . $linea . "<br>";
     }
+    fclose($fichero);
     ?>
 </body>
 
