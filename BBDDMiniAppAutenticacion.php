@@ -1,17 +1,19 @@
 <?php
 session_start();
-$usuario = 'david';
-$contraseña = 'david';
 
-if (isset($_REQUEST['acceder'])) {
+$usuario = "david";
+$contraseña = "david";
 
-    if ($usuario === $_REQUEST['usuario'] && $contraseña === $_REQUEST['contraseña']) {
+if (isset($_REQUEST["acceder"])) {
+
+    if ($_REQUEST["usuario"] === $usuario && $_REQUEST["contraseña"] === $contraseña) {
+        $_SESSION["iniciar"] = true; // creo esta variable para usarla luego como comprobacion
         header("Location: BBDDMiniAppMostrar.php");
     } else {
+        echo "<br>";
         echo "<i>Usuario o contraseña incorrectos.</i>";
     }
 }
-
 ?>
 
 <!DOCTYPE html>

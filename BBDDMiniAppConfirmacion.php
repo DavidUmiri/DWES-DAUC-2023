@@ -1,7 +1,6 @@
 <?php
 include("BBDDMiniAppInclude.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,21 +8,27 @@ include("BBDDMiniAppInclude.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar</title>
+    <title>CONFIRMACION</title>
 </head>
 
 <body align=center>
 
     <br><br><br>
-    <h1>Mostrar</h1>
+    <h1>Confirmación</h1>
+    <br>
 
+    <!-- STOCK ACTUALIZADO -->
     <?php
     $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
 
-    if ($consulta = $pdo->query("SELECT * from almacen")) {
+    echo "<strong>Usted ha solicitado " . $_SESSION['cantidad'] . " " . $_SESSION['prenda'] . "</strong>";
+    echo "<br><br><br>";
+
+    if ($consulta = $pdo->query("SELECT * from almacen;")) {
+        echo "<i>Stock actualizado:</i><br>";
 
         while ($registro = $consulta->fetch()) {
-            echo "<strong>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</strong>";
+            echo "<i>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</i>";
             echo "<br>";
         }
     } else {
@@ -32,8 +37,9 @@ include("BBDDMiniAppInclude.php");
     ?>
 
     <br><br>
-    <a href="BBDDMiniAppCerrar.php"><button name="atras">Atrás</button></a>
-    <a href="BBDDMiniAppModificar.php"><button name="siguiente">Siguiente</button></a>
+    <a href="BBDDMiniAppPedido.php"><button>Atrás</button></a>
+    <a href="BBDDMiniAppCerrar.php"><button>Cerrar sesión</button></a>
+
 
 </body>
 

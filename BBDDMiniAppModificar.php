@@ -1,3 +1,6 @@
+<?php
+include("BBDDMiniAppInclude.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,16 +11,20 @@
     <title>MODIFICAR</title>
 </head>
 
-<body>
+<body align=center>
+
+    <br><br><br>
     <h1>Modificar</h1>
 
-    <!-- ANTERIOR -->
+    <!-- STOCK -->
     <?php
     $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
+
     if ($consulta = $pdo->query("SELECT * from almacen;")) {
-        echo "<i>Stock actual:</i> <br>";
+        echo "<strong>Stock:</strong><br>";
+
         while ($registro = $consulta->fetch()) {
-            echo "<i>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</i>";
+            echo "<strong>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</strong>";
             echo "<br>";
         }
     } else {
@@ -26,40 +33,71 @@
     ?>
 
     <!-- FORMULARIO -->
+    <br>
     <form action="BBDDMiniAppModificar.php" method="POST">
-        <p>Prendas:
-            <select name="prenda">
-                <option>pantalones</option>
-                <option>sudaderas</option>
-            </select>
+        <p>
+            Seleccionar prenda: <input type="text" name="prenda">
         </p>
-        <p>Añadir (+) / Quitar (-): <input type="number" name="cantidad"></p>
-        <input type="submit" name="enviar" value="Enviar">
+        <p>
+            Nueva prenda: <input type="text" name="nuevaPrenda">
+        </p>
+        <p>
+            Eliminar prenda: <input type="text" name="eliminarPrenda">
+        </p>
+        <p>
+            Cantidad: <input type="number" name="cantidad" min="0" max="9999">
+            <input type="submit" name="ingresar" value="Ingresar">
+        </p>
     </form>
+    <br>
+    <a href="BBDDMiniAppMostrar.php"><button name="atras">Atrás</button></a>
+    <a href="BBDDMiniAppPedido.php"><button name="siguiente">Siguiente</button></a>
+    <br><br><br>
 
-    <!-- ACTUALIZO BBDD -->
+    <!-- ACTUALIZAR STOCK -->
     <?php
-    if (isset($_REQUEST['prenda'], $_REQUEST['cantidad'])) {
+    if (isset($_REQUEST['prenda'], $_REQUEST['nuevaPrenda'], $_REQUEST['eliminarPrenda'], $_REQUEST['cantidad'])) {
         $prenda = $_REQUEST['prenda'];
+        $nuevaPrenda = $_REQUEST['nuevaPrenda'];
+        $eliminarPrenda = $_REQUEST['eliminarPrenda'];
         $cantidad = $_REQUEST['cantidad'];
     } else {
         $prenda = "";
+        $nuevaPrenda = "";
+        $eliminarPrenda = "";
         $cantidad = 0;
     }
 
-    if (isset($_REQUEST['enviar'])) {
-        $consulta = $pdo->query("UPDATE almacen set cantidad=cantidad + $cantidad where ropa='$prenda';");
-        echo "<br><strong>Cambios realizados</strong><br>";
+    // incrementar prenda
+    if ($prenda != "") {
+        if (isset($_REQUEST['ingresar'])) {
+            $consulta = $pdo->query("UPDATE almacen set cantidad = cantidad + $cantidad where ropa = '$prenda';");
+        }
+    }
+
+    // nueva prenda
+    if ($nuevaPrenda != "") {
+        if (isset($_REQUEST['ingresar'])) {
+            $consulta = $pdo->query("INSERT into almacen (ropa,cantidad) values ('$nuevaPrenda', $cantidad);");
+        }
+    }
+
+    // eliminar prenda
+    if ($eliminarPrenda != "") {
+        if (isset($_REQUEST['ingresar'])) {
+            $consulta = $pdo->query("DELETE from almacen where ropa='$eliminarPrenda';");
+        }
     }
     ?>
 
-    <!-- MUESTRO BBDD ACTUALIZADO-->
+    <!-- MOSTRAR STOCK ACTUALIZADO -->
     <?php
-    if (isset($_REQUEST['enviar'])) {
+    if (isset($_REQUEST['ingresar'])) {
         if ($consulta = $pdo->query("SELECT * from almacen;")) {
+            echo "<i>Stock actualizado:</i><br>";
 
             while ($registro = $consulta->fetch()) {
-                echo "<strong>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</strong>";
+                echo "<i>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</i>";
                 echo "<br>";
             }
         } else {
@@ -67,6 +105,7 @@
         }
     }
     ?>
+
 </body>
 
 </html>

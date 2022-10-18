@@ -1,0 +1,21 @@
+create database tienda;
+create user gerente identified by 'gerente';
+use tienda;
+grant all on * to gerente;
+
+create table Tienda(
+ProductoTienda varchar(120)primary key,
+Stock int(10)
+); 
+
+insert into Tienda values
+('Guantes','40'),
+('Zapatos','55'),
+('Alfombras','70'),
+('Almohadas','80'),
+('Gafas','32'),
+('Bufandas','14'),
+('Pantalones','11'),
+('Abrigos','22'),
+('Camisetas','77'),
+('Gorros','65');
