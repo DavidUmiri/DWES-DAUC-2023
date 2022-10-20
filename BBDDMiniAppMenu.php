@@ -18,19 +18,19 @@ include("BBDDMiniAppInclude.php");
     <h1>Menú</h1>
 
     <a href="BBDDMiniAppMostrar.php"><button>
-            <h6>MOSTRAR</h6>
+            <h5>MOSTRAR</h5>
         </button></a>
     <a href="BBDDMiniAppModificar.php"><button>
-            <h6>MODIFICAR</h6>
+            <h5>MODIFICAR</h5>
         </button></a>
     <a href="BBDDMiniAppPedido.php"><button>
-            <h6>PEDIDO</h6>
+            <h5>PEDIDO</h5>
         </button></a>
     <a href="BBDDMiniAppConfirmacion.php"><button>
-            <h6>CONFIRMACIÓN</h6>
+            <h5>CONFIRMACIÓN</h5>
         </button></a>
     <a href="BBDDMiniAppCerrar.php"><button>
-            <h6>CERRAR CESIÓN</h6>
+            <h5>CERRAR CESIÓN</h5>
         </button></a>
 
 
