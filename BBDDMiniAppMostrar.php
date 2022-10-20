@@ -18,8 +18,6 @@ include("BBDDMiniAppInclude.php");
     <h1>Mostrar</h1>
 
     <?php
-    $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
-
     if ($consulta = $pdo->query("SELECT * from almacen")) {
 
         while ($registro = $consulta->fetch()) {
@@ -32,8 +30,8 @@ include("BBDDMiniAppInclude.php");
     ?>
 
     <br><br>
-    <a href="BBDDMiniAppCerrar.php"><button name="atras">Atrás</button></a>
-    <a href="BBDDMiniAppModificar.php"><button name="siguiente">Siguiente</button></a>
+    <a href="BBDDMiniAppMenu.php"><button>Atrás</button></a>
+    <a href="BBDDMiniAppModificar.php"><button>Siguiente</button></a>
 
 </body>
 

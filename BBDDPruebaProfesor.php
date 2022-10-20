@@ -3,6 +3,7 @@
 $cantidad = $_POST['cantidad'];
 
 if ($pdo = new PDO("mysql:dbname=frutas;host=localhost", "frutero", "frutero")) {
+
 	$update = "UPDATE stock SET stock=stock-$cantidad WHERE frutas='kiwi' and stock >= $cantidad;";
 
 	if ($resultado = $pdo->query($update) != null && $resultado->rowCount() > 0) {

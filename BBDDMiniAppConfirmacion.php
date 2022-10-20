@@ -1,6 +1,7 @@
 <?php
 include("BBDDMiniAppInclude.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,7 +20,10 @@ include("BBDDMiniAppInclude.php");
 
     <!-- STOCK ACTUALIZADO -->
     <?php
-    $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
+    if (!(isset($_SESSION['cantidad'], $_SESSION['prenda']))) {
+        $_SESSION['cantidad'] = 0;
+        $_SESSION['prenda'] = "";
+    }
 
     echo "<strong>Usted ha solicitado " . $_SESSION['cantidad'] . " " . $_SESSION['prenda'] . "</strong>";
     echo "<br><br><br>";
@@ -38,8 +42,8 @@ include("BBDDMiniAppInclude.php");
 
     <br><br>
     <a href="BBDDMiniAppPedido.php"><button>Atrás</button></a>
+    <a href="BBDDMiniAppMenu.php"><button>Menú</button></a>
     <a href="BBDDMiniAppCerrar.php"><button>Cerrar sesión</button></a>
-
 
 </body>
 

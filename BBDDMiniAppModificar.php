@@ -1,6 +1,7 @@
 <?php
 include("BBDDMiniAppInclude.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,8 +19,6 @@ include("BBDDMiniAppInclude.php");
 
     <!-- STOCK -->
     <?php
-    $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
-
     if ($consulta = $pdo->query("SELECT * from almacen;")) {
         echo "<strong>Stock:</strong><br>";
 
@@ -50,8 +49,9 @@ include("BBDDMiniAppInclude.php");
         </p>
     </form>
     <br>
-    <a href="BBDDMiniAppMostrar.php"><button name="atras">Atrás</button></a>
-    <a href="BBDDMiniAppPedido.php"><button name="siguiente">Siguiente</button></a>
+    <a href="BBDDMiniAppMostrar.php"><button>Atrás</button></a>
+    <a href="BBDDMiniAppMenu.php"><button>Menú</button></a>
+    <a href="BBDDMiniAppPedido.php"><button>Siguiente</button></a>
     <br><br><br>
 
     <!-- ACTUALIZAR STOCK -->

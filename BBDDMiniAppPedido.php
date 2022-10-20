@@ -1,6 +1,7 @@
 <?php
 include("BBDDMiniAppInclude.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,13 +29,12 @@ include("BBDDMiniAppInclude.php");
         </p>
     </form>
     <br>
-    <a href="BBDDMiniAppModificar.php"><button name="atras">Atrás</button></a>
-    <a href="BBDDMiniAppConfirmacion.php"><button name="siguiente">Siguiente</button></a>
+    <a href="BBDDMiniAppModificar.php"><button>Atrás</button></a>
+    <a href="BBDDMiniAppMenu.php"><button>Menú</button></a>
+    <a href="BBDDMiniAppConfirmacion.php"><button>Siguiente</button></a>
     <br><br><br>
 
     <?php
-    $pdo = new PDO("mysql:dbname=tienda;host=localhost", "david", "david");
-
     if (isset($_REQUEST['prenda'], $_REQUEST['cantidad'])) {
         $prenda = $_REQUEST['prenda'];
         $cantidad = $_REQUEST['cantidad'];
@@ -43,10 +43,19 @@ include("BBDDMiniAppInclude.php");
         $cantidad = 0;
     }
 
-    // decrementar prenda
+    // disminuir prenda
     if ($prenda != "") {
+
         if (isset($_REQUEST['ingresar'])) {
-            $consulta = $pdo->query("UPDATE almacen set cantidad = cantidad - $cantidad where ropa = '$prenda';");
+
+            $update = "UPDATE almacen set cantidad = cantidad - $cantidad where ropa = '$prenda' and cantidad >= $cantidad;";
+            $resultado = $pdo->query($update);
+
+            if ($resultado != null && $resultado->rowCount() > 0) {
+                print "Se ha realizado el pedido";
+            } else {
+                print "No hay $prenda suficientes";
+            }
         }
     }
 
@@ -54,6 +63,7 @@ include("BBDDMiniAppInclude.php");
     $_SESSION['prenda'] = $prenda;
     $_SESSION['cantidad'] = $cantidad;
     ?>
+
 </body>
 
 </html>
