@@ -18,8 +18,10 @@ include("BBDDMiniAppInclude.php");
     <h1>Mostrar</h1>
 
     <?php
+    // query ejecuta una sentencia SQL devolviendo el conjunto de resultados (si los hay)
     if ($consulta = $pdo->query("SELECT * from almacen")) {
 
+        // fetch obtiene una fila de un conjunto de resultados
         while ($registro = $consulta->fetch()) {
             echo "<strong>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</strong>";
             echo "<br>";

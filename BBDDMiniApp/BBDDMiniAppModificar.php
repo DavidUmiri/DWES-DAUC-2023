@@ -44,7 +44,7 @@ include("BBDDMiniAppInclude.php");
             Eliminar prenda: <input type="text" name="eliminarPrenda">
         </p>
         <p>
-            Cantidad: <input type="number" name="cantidad" min="0" max="9999">
+            Cantidad: <input type="number" name="cantidad" min="0">
             <input type="submit" name="ingresar" value="Ingresar">
         </p>
     </form>

@@ -1,4 +1,4 @@
-<!-- Fichero que se añadira a todos los archivos menos al primero para que funcionen correctamente -->
+<!-- Fichero que se añadira a todos los archivos, menos al primero, para que funcionen correctamente -->
 
 <?php
 // iniciar sesion

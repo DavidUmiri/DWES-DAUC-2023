@@ -18,7 +18,6 @@ include("BBDDMiniAppInclude.php");
     <h1>Confirmación</h1>
     <br>
 
-    <!-- STOCK ACTUALIZADO -->
     <?php
     if (!(isset($_SESSION['cantidad'], $_SESSION['prenda']))) {
         $_SESSION['cantidad'] = 0;
@@ -28,6 +27,8 @@ include("BBDDMiniAppInclude.php");
     echo "<strong>Usted ha solicitado " . $_SESSION['cantidad'] . " " . $_SESSION['prenda'] . "</strong>";
     echo "<br><br><br>";
 
+
+    // MUESTRO STOCK
     if ($consulta = $pdo->query("SELECT * from almacen;")) {
         echo "<i>Stock actualizado:</i><br>";
 

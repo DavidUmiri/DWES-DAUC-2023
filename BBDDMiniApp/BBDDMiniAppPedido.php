@@ -24,7 +24,7 @@ include("BBDDMiniAppInclude.php");
             Escriba la prenda: <input type="text" name="prenda">
         </p>
         <p>
-            Cantidad: <input type="number" name="cantidad" min="0" max="100">
+            Cantidad: <input type="number" name="cantidad" min="0">
             <input type="submit" name="ingresar" value="Ingresar">
         </p>
     </form>
@@ -51,6 +51,7 @@ include("BBDDMiniAppInclude.php");
             $update = "UPDATE almacen set cantidad = cantidad - $cantidad where ropa = '$prenda' and cantidad >= $cantidad;";
             $resultado = $pdo->query($update);
 
+            // rowCount() devuelve el numero de filas agregadas, eliminadas o cambiadas en la última instrucción
             if ($resultado != null && $resultado->rowCount() > 0) {
                 print "Se ha realizado el pedido";
             } else {
