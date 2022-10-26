@@ -2,9 +2,9 @@
 // inicio la sesion para utilizar una variable mas abajo
 session_start();
 
-// creo las variables locales de comprobacion
-$usuario = "david";
-$contraseña = "david";
+// creo las variables locales
+$usuario = "usuario";
+$contraseña = "contraseña";
 ?>
 
 <!DOCTYPE html>

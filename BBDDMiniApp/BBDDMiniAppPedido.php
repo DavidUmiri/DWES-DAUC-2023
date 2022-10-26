@@ -17,6 +17,20 @@ include("BBDDMiniAppInclude.php");
     <br><br><br>
     <h1>Pedido</h1>
 
+    <!-- MOSTRAR -->
+    <?php
+    if ($consulta = $pdo->query("SELECT * from almacen")) {
+
+        // fetch obtiene una fila de un conjunto de resultados
+        while ($registro = $consulta->fetch()) {
+            echo "<strong>" . $registro["ropa"] . ": " . $registro["cantidad"] . "</strong>";
+            echo "<br>";
+        }
+    } else {
+        echo "Problema accediendo a la base de datos TIENDA.";
+    }
+    ?>
+
     <!-- FORMULARIO -->
     <br>
     <form action="BBDDMiniAppPedido.php" method="POST">
@@ -48,12 +62,12 @@ include("BBDDMiniAppInclude.php");
 
         if (isset($_REQUEST['ingresar'])) {
 
-            $update = "UPDATE almacen set cantidad = cantidad - $cantidad where ropa = '$prenda' and cantidad >= $cantidad;";
+            $update = "UPDATE almacen set cantidad = cantidad - $cantidad where ropa = '$prenda' and cantidad >= $cantidad;"; // cantidad de almacén mayor o igual a la cantidad del pedido
             $resultado = $pdo->query($update);
 
             // rowCount() devuelve el numero de filas agregadas, eliminadas o cambiadas en la última instrucción
             if ($resultado != null && $resultado->rowCount() > 0) {
-                print "Se ha realizado el pedido";
+                header("Location: BBDDMiniAppConfirmacion.php");
             } else {
                 print "No hay $prenda suficientes";
             }

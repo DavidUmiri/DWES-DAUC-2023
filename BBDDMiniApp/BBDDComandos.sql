@@ -1,12 +1,23 @@
+-- En Windows puedes hacer mysql -u root < fichero.sql
+-- Cargar archivo en mysql (windows)
+-- source C:\wamp64\www\DWES-DAUC-2023\BBDDMiniApp\BBDDComandos.sql
+
+-- Borrar la base de datos si existe
+drop database if exists tienda2;
+
 -- Crear la base de datos.
-create database tienda;
-use tienda;
+create database tienda2;
 
 -- Crear usuario y contraseña.
-create user david identified by 'david';
+create user usuario identified by 'contraseña';
+-- create user 'usuario'@'localhost' identified by 'contraseña';
+-- create user 'usuario'@'%' identified by 'contraseña';
 
 -- Permisos usuario.
-grant all on * to david;
+grant all on * to usuario;
+
+-- Usar la base
+use tienda2;
 
 -- Crear tabla.
 create table almacen(ropa varchar(20) primary key, cantidad int);
@@ -15,10 +26,10 @@ create table almacen(ropa varchar(20) primary key, cantidad int);
 insert into almacen values('sudaderas',20);
 
 -- Insertar nuevos elementos.
-insert into almacen (ropa,cantidad) values ('zapatillas', 10);
+-- insert into almacen (ropa,cantidad) values ('zapatillas', 10);
 
 -- Actualizar datos.
-update almacen set cantidad = cantidad + 10 where ropa = 'sudaderas'; 
+-- update almacen set cantidad = cantidad + 10 where ropa = 'sudaderas'; 
 
 -- Borrar datos.
-delete from almacen where ropa="camisas";
+-- delete from almacen where ropa="camisas";
