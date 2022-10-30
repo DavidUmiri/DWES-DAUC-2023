@@ -3,13 +3,13 @@
 require_once 'conexion.php';
 session_start();
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
 
-// importante
+// 
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO login VALUES(";
+$sql = "INSERT INTO tabla VALUES(";
 $sql .= "'" . $username . "', '" . $passwordHash . "')";
 
 if ($conexion->query($sql)) {
