@@ -9,10 +9,10 @@ $password = $_REQUEST['password'];
 // 
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO tabla VALUES(";
+$sql = "INSERT INTO login VALUES(";
 $sql .= "'" . $username . "', '" . $passwordHash . "')";
 
-if ($conexion->query($sql)) {
+if ($pdo->query($sql)) {
     $_SESSION['resultado'] = true;
 } else {
     $_SESSION['resultado'] = false;
