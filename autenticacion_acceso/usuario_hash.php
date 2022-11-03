@@ -19,7 +19,7 @@ $contraseña_nueva = $_REQUEST['contraseña_nueva'];
 
 // ************************************************************
 
-$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+$passwordHash = password_hash($contraseña_nueva, PASSWORD_DEFAULT, [15]);
 $sql = "INSERT INTO login VALUES(";
 $sql .= "'" . $usuario_nuevo . "', '" . $passwordHash . "')";
 
