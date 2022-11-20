@@ -51,25 +51,24 @@
         <p>
             <label for="compras1">Sandías:</label>
             <input type="number" name="compras1" value="0" step="0.1">
-            <input type="text" name="sandias" value="<?php echo $total; ?>">
-            <input type="submit" name="submit" value="Añadir">
+            <input type="text" name="sandias" value="<?php echo $total; ?> ">
         </p>
         <!-- FRESAS -->
         <p>
             <label for="compras2">Fresas:</label>
             <input type="number" name="compras2" value="0" step="0.1">
             <input type="text" name="fresas" value="<?php echo $total2; ?>">
-            <input type="submit" name="submit" value="Añadir">
         </p>
         <!-- CHIRIMOYAS -->
         <p>
             <label for="compras3">Chirimoyas:</label>
             <input type="number" name="compras3" value="0" step="0.1">
             <input type="text" name="chirimoyas" value="<?php echo $total3; ?>">
-            <input type="submit" name="submit" value="Añadir">
         </p>
+        <input type="submit" value="Añadir">
         <!-- TOTAL COMPRA -->
         <p>
+
             <label for="totalCompra">TOTAL COMPRA:</label>
             <input type="text" name="totalCompra" value="<?php echo $totalCompra; ?>">
         </p>

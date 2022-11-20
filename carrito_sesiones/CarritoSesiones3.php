@@ -16,18 +16,15 @@ echo "Total de sandías: " . $_SESSION['cantidad'] . " unidades";
 <body>
     <br>
     <br>
-    <a href="CarritoSesiones2.php"><button>Atrás</button></a>
+    <a href="CarritoSesiones2.php"><button name="atras">Atrás</button></a>
     <br>
     <br>
     <a href="CarritoSesiones.php"><button name="cerrar">Cerrar sesión</button></a>
+    <br><br>
 
     <?php
-    if (!isset($_REQUEST['cerrar'])) {
-        session_destroy();
-    }
-
     // Leemos el fichero.
-    $fichero = fopen("FicheroFrutas.txt", 'r');
+    $fichero = fopen("carrito.txt", 'r');
     while (!feof($fichero)) {
         $linea = fgets($fichero);
         echo "<br>" . $linea . "<br>";

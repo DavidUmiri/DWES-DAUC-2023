@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,21 +13,21 @@ session_start();
 
 <body>
     <br>
-    <form action="UsuarioHeader.php" method=GET>
+    <form action="UsuarioHeader.php" method=POST>
         <input name="Usuario" type="text" placeholder="Escribe tu usuario">
         <input name="Contraseña" type="text" placeholder="Escribe tu contraseña">
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar" name="enviar">
     </form>
 
     <?php
-    $_SESSION["UsuarioCorrecto"] = "david";
-    $_SESSION["ContraseñaCorrecta"] = "1998";
+    $usuarioCorrecto = "david";
+    $contraseñaCorrecta = "1998";
 
+    if (isset($_REQUEST["enviar"])) {
 
-    if (isset($_REQUEST["Usuario"], $_REQUEST["Contraseña"])) {
-
-        if ($_REQUEST["Usuario"] === $_SESSION["UsuarioCorrecto"] && $_SESSION["ContraseñaCorrecta"] === $_REQUEST["Contraseña"]) {
-            header("location: UsuarioHeader2.php");
+        if ($_REQUEST["Usuario"] == $usuarioCorrecto && $_REQUEST["Contraseña"] == $contraseñaCorrecta) {
+            $_SESSION["sesionIniciada"] = true;
+            header("Location: UsuarioHeader2.php");
         } else {
             echo "<br>";
             echo "Usuario o contraseña incorrectos.";

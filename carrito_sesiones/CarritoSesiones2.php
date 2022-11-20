@@ -30,7 +30,7 @@ session_start();
         <p>
             <label for="cantidad">Sandías:</label>
             <input type="number" name="cantidad" value="0">
-            <input type="hidden" name="sandias" value="<?php echo $total; ?>">
+            <input type="text" name="sandias" value="<?php echo $total; ?>">
             <input type="submit" name="añadir" value="Añadir">
         </p>
     </form>
@@ -39,12 +39,8 @@ session_start();
 
     <?php
     $_SESSION['cantidad'] = $total;
-    ?>
 
-
-    <?php
-    // Creo que el fichero en modo añadir.
-    $fichero = fopen("FicheroFrutas.txt", 'a');
+    $fichero = fopen("carrito.txt", 'a');
 
     if (isset($_REQUEST['añadir'])) {
         $cantidad = $_REQUEST['cantidad'];

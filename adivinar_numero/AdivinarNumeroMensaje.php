@@ -23,7 +23,7 @@
                 <td><input type="number" name="form_num" min="1" max="100"></td>
             </tr>
             <tr align="center">
-                <td><input type="submit" value="Comprobar"></td>
+                <td><input type="submit" name="comprobar" value="Comprobar"></td>
             </tr>
         </table>
     </form>
