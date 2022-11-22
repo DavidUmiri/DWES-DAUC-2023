@@ -9,45 +9,33 @@
 </head>
 
 <?php
-// APELLIDOS Y NOMBRE
 if (isset($_REQUEST['enviar'])) {
     $nombre = $_REQUEST['nombre'];
-    $nombreNuevo = $nombre . $_REQUEST['nombre'];
+    $direccion = $_REQUEST['direccion'];
+    $correo = $_REQUEST['correo'];
+    $sexo = $_REQUEST["sexo"];
+
+    $resultado =  $_REQUEST["resultado"];
+    $resultado = $resultado . " " . $nombre . " " . $direccion . " " . $correo . " " . $sexo;
 } else {
     $nombre = "";
-    $nombreNuevo = $nombre;
+    $direccion = "";
+    $correo = "";
+    $sexo = "";
+    $resultado = "";
 }
 
-if (isset($_REQUEST['enviar'])) {
-    $nombreNuevo = $_REQUEST['nombre'];
-} else {
-    $nombreNuevo = "";
-}
-// DIRECCIÓN
-if (isset($_REQUEST['enviar'])) {
-    $direccion = $_REQUEST['direccion'];
-} else {
-    $direccion = "";
-}
-// CORREO ELECTRÓNICO
-if (isset($_REQUEST['enviar'])) {
-    $correo = $_REQUEST['correo'];
-} else {
-    $correo = "";
-}
-// SEXO
-// ENVIAR Y BORRAR
 
 ?>
 
 <body>
     <br>
-    <form action="FormularioActualizacion" method="POST">
+    <form action="FormularioActualizacion.php" method="POST">
         <!-- APELLIDOS Y NOMBRE -->
         <fieldset>
             <legend>APELLIDOS Y NOMBRE</legend>
             <p>
-                <input style="text-transform: uppercase;" type="text" name="nombre" id="nombre" size="30" value="<?php echo $nombre ?>">
+                <input autofocus style="text-transform: uppercase;" type="text" name="nombre" id="nombre" size="30" value="<?php echo $nombre ?>">
             </p>
         </fieldset>
         <!-- DIRECCIÓN -->
@@ -68,15 +56,15 @@ if (isset($_REQUEST['enviar'])) {
         <fieldset>
             <legend>SEXO</legend>
             <p>
-                <input type="radio" name="sexo" id="mujer" value="">
+                <input type="radio" name="sexo" value="mujer">
                 <label for="sexo">Mujer</label>
             </p>
             <p>
-                <input type="radio" name="sexo" id="hombre" value="">
+                <input type="radio" name="sexo" value="hombre">
                 <label for="sexo">Hombre</label>
             </p>
             <p>
-                <input type="radio" name="sexo" id="otro" value="">
+                <input type="radio" name="sexo" value="otro">
                 <label for="sexo">Otro</label>
             </p>
         </fieldset>
@@ -85,11 +73,12 @@ if (isset($_REQUEST['enviar'])) {
             <input type="submit" name="enviar" value="ENVIAR">
             <input style="float: right;" type="reset" name="borrar" value="BORRAR">
         </fieldset>
+        <!-- ALMACENAR NOMBRE ANTERIOR -->
+        <br>
+        <textarea style="text-transform: uppercase;" name="resultado" cols="150" rows="10"><?php print "$resultado\n" ?></textarea>
     </form>
-    <br>
-    <!-- ALMACENAR NOMBRE ANTERIOR -->
-    <input type="text" name="nombre" value="<?php echo $nombreNuevo ?>" size=" 100">
-    <input name="nombre" type="hidden" value="<? echo $nombreNuevo ?>">
+
+
 </body>
 
 </html>

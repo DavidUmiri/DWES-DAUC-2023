@@ -31,17 +31,43 @@ include("BBDDMiniAppInclude.php");
     }
     ?>
 
+
+
     <!-- FORMULARIO -->
     <br>
     <form action="BBDDMiniAppModificar.php" method="POST">
         <p>
             Seleccionar prenda: <input type="text" name="prenda">
         </p>
-        <p>
-            Nueva prenda: <input type="text" name="nuevaPrenda">
-        </p>
+        <!-- mejorado -->
+        <!-- <br>
+        <label for="prenda">Seleccionar prenda</label>
+        <select name="prenda">
+            <?php
+            if ($consulta = $pdo->query("SELECT * from almacen;")) {
+                while ($registro = $consulta->fetch()) {
+                    echo "<option name='prenda'>" . $registro["ropa"] . "</option>";
+                }
+            } ?>
+        </select>
+        <br><br> -->
+        <!--  -->
         <p>
             Eliminar prenda: <input type="text" name="eliminarPrenda">
+        </p>
+        <!-- mejorado -->
+        <!-- <label for="eliminarPrenda">Eliminar prenda</label>
+        <select name="eliminarPrenda">
+            <?php
+            if ($consulta = $pdo->query("SELECT * from almacen;")) {
+                while ($registro = $consulta->fetch()) {
+                    echo "<option name='eliminarPrenda'>" . $registro["ropa"] . "</option>";
+                }
+            } ?>
+        </select> -->
+        <!--  -->
+        <p>
+            Nueva prenda: <input type="text" name="nuevaPrenda">
         </p>
         <p>
             Cantidad: <input type="number" name="cantidad" min="0">

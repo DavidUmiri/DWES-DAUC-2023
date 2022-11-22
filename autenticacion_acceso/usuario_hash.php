@@ -19,9 +19,11 @@ $contraseña_nueva = $_REQUEST['contraseña_nueva'];
 
 // ************************************************************
 
+
 $passwordHash = password_hash($contraseña_nueva, PASSWORD_DEFAULT, [15]);
-$sql = "INSERT INTO login VALUES(";
-$sql .= "'" . $usuario_nuevo . "', '" . $passwordHash . "')";
+// $sql = "INSERT INTO login VALUES(";
+// $sql .= "'" . $usuario_nuevo . "', '" . $passwordHash . "')";
+$sql = "INSERT INTO login VALUES( '" . $usuario_nuevo . "','" . $passwordHash . "')";
 
 // ************************************************************
 
@@ -30,5 +32,7 @@ if ($conexion->query($sql)) {
 } else {
     $_SESSION['resultado'] = false;
 }
+
+$_SESSION["prueba"] = $passwordHash;
 
 header("Location: crear_usuario.php");

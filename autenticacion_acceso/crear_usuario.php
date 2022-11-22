@@ -17,6 +17,7 @@ include "include.php";
     if (isset($_SESSION['resultado'])) {
         if ($_SESSION['resultado']) {
             echo "<p>Usuario creado correctamente</p>";
+            // echo "Contraseña: " . $_SESSION["prueba"];
         } else {
             echo "<p>Hubo un problema al crear el usuario</p>";
         }
@@ -24,12 +25,12 @@ include "include.php";
     }
     ?>
 
-    <form action="usuario_hash.php" method="post">
+    <form action="usuario_hash.php" method="POST">
         <h1>Crear usuario</h1>
         <label for="usuario_nuevo">Usuario nuevo</label>
-        <input type="text" name="usuario_nuevo" id="usuario_nuevo">
+        <input type="text" name="usuario_nuevo">
         <label for="contraseña_nueva">Contraseña nueva</label>
-        <input type="password" name="contraseña_nueva" id="contraseña_nueva">
+        <input type="password" name="contraseña_nueva">
         <input type="submit" value="Crear usuario">
     </form>
 

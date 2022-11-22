@@ -3,21 +3,21 @@
 -- source C:\wamp64\www\DWES-DAUC-2023\BBDDMiniApp\BBDDComandos.sql
 
 -- Borrar la base de datos si existe
-drop database if exists tienda2;
+drop database if exists tienda;
 
 -- Crear la base de datos.
-create database tienda2;
+create database tienda;
 
 -- Crear usuario y contraseña.
-create user usuario identified by 'contraseña';
+-- create user usuario identified by 'contraseña';
 -- create user 'usuario'@'localhost' identified by 'contraseña';
 -- create user 'usuario'@'%' identified by 'contraseña';
 
 -- Permisos usuario.
-grant all on * to usuario;
+-- grant all on * to usuario;
 
 -- Usar la base
-use tienda2;
+use tienda;
 
 -- Crear tabla.
 create table almacen(ropa varchar(20) primary key, cantidad int);

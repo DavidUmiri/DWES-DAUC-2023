@@ -44,11 +44,9 @@ function muestraFormulario($tope, $ale, $intentos)
     echo <<<FIN
     <form method="post">
     <label for="">Dime tu numero entre 1 y $tope:</label>
-    <input type="number" name="numero">
+    <input type="number" name="numero" autofocus>
     <input type="submit" value="Enviar">
     </form>
     FIN;
 }
 ?>
-
-<!-- <label>Llevas $intentos intentos</label><br>  -->
