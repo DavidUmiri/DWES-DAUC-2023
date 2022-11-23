@@ -1,5 +1,5 @@
 <?php
-// Define: para definir constantes. 
+// Define: para definir constantes 
 define("RUTA_ARCHIVO", "stock.ser");
 
 if (file_exists(RUTA_ARCHIVO)) {
@@ -9,11 +9,12 @@ if (file_exists(RUTA_ARCHIVO)) {
         echo "<br> $fruta : $valor";
     }
 } else {
-    // echo "El archivo no existe";
+    // rellenamos el array
     $stock = array(
         "fresas" => 10,
         "platanos" => 20,
         "kiwis" => 5
     );
+    // file_put_contents rellena o crea el archivo si no existe
     echo "<br>" . file_put_contents(RUTA_ARCHIVO, serialize($stock));
 }

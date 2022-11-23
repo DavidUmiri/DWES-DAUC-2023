@@ -6,7 +6,7 @@ if (file_exists(RUTA_ARCHIVO)) {
     // echo "El archivo existe";
     $file = fopen(RUTA_ARCHIVO, "r");
     while ($linea = fgets($file)) {
-        // explode(): divide un string en varios string.
+        // explode(): divide un string en varios string.w
         $campos = explode(",", $linea);
         $stock[$campos[0]] = $campos[1];
     }
