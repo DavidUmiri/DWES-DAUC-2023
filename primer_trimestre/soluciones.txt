@@ -1,0 +1,54 @@
+// SOLUCIONES EXÁMEN 1º TRIMESTRA ENTORNO SERVIDOR
+
+[10:35, 24/11/2022] David Umiri: preguntas 
+
+1) Fue regalo era muy facil 
+
+había distintas formas de hacerlo 
+- cabeceras 
+- postman
+- Inspecionar
+- comando curl
+
+[10:35, 24/11/2022] David Umiri: 
+
+2) modificar fichero personajes.php
+- cabecera --> header(content-type: aplication/json; charset: UTF-8);
+
+- seleccion todos los personajes 
+--> else{}
+[10:35, 24/11/2022] David Umiri: 
+else {
+ echo json-encode($personajes);
+}
+[10:35, 24/11/2022] David Umiri:
+ - un solo personaje 
+--> dentro del segundo if 
+if{
+echo echo-encode
+($personajes [$id -1]);
+}
+
+[10:35, 24/11/2022] David Umiri: 
+
+3) modificar fichero formulario datos personales 
+- si hay algún campo vacío mensaje de error 
+- si está todo relleno mensaje de que está ok 
+- las respuestas se cogen del request o get 
+- para nombre y edad 
+value="<?=$nombre>" // $edad
+- genero 
+if(genero == "F") echo "selected"
+
+[10:35, 24/11/2022] David Umiri: 
+
+4) carrito de la compra vacía 
+cada vez que introduces algo que se vea como una lista 
+[Fue muy rápido y no pude coger la parte importante ]
+
+[10:35, 24/11/2022] David Umiri:
+ 
+5) validación de usuario y contraseña 
+se introducirá como hash 
+contraseña metida ver si coincide con el hash 
+en las demás páginas si no se ingresó la contraseña redirigir a inicio
