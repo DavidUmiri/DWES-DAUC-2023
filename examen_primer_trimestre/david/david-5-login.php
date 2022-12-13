@@ -1,10 +1,6 @@
 <?php
-session_start();
-$usuario_correcto = "david";
-$contraseña_correcta = "umiri";
-
-// $hash = password_hash($contraseña_correcta, PASSWORD_DEFAULT);
 ?>
+
 
 <html>
 
@@ -13,8 +9,7 @@ $contraseña_correcta = "umiri";
 </head>
 
 <body>
-    <!-- Mostrar solo si no se ha facilitado ya usuario y contraseña correctos:
--->
+    <!-- Mostrar solo si no se ha facilitado ya usuario y contraseña correctos: -->
     <form method=post>
         <label>Nombre:</label>
         <input type="text" name="user" />
@@ -26,34 +21,41 @@ $contraseña_correcta = "umiri";
         <a><button name="cerrar">Cerrar cesion</button></a>
     </form>
 
-    <!-- Mostrar solo si se ha facilitado ya usuario y contraseña correctos:
--->
+    <!-- Mostrar solo si se ha facilitado ya usuario y contraseña correctos: -->
     <?php
+    $conexion = new PDO("mysql:dbname=login;host=localhost", "root", "");
+    $acentos = $conexion->query("SET NAMES 'utf8'");
+
+
+
+    // $usuario_correcto = "david";
+    // $contraseña_correcta = "umiri";
+    // $correcta_hasheada = password_hash($contraseña_correcta, PASSWORD_BCRYPT, ["cost" => 11]);
+
+    if (!isset($_REQUEST["password"])) {
+        $_REQUEST["password"] = "";
+    }
+
+    $contraseña_introducida = $_REQUEST["password"];
+    $contraseña_introducida_hasheada = password_hash($contraseña_introducida, PASSWORD_BCRYPT, ["cost" => 11]);
+
     if (isset($_REQUEST["enviar"])) {
 
-        /*
-        if ($_REQUEST["user"] == $usuario_correcto && password_verify($_REQUEST["password"],$hash)) {
+        $query = "SELECT * FROM login WHERE username = '" . $_REQUEST["user"] . "' AND password = '" . $_REQUEST["password"] . "'";
+        $validando = $conexion->query($query);
+
+        if ($validando->rowCount() > 0) {
+
+            echo "El usuario y contraseña ya se encuentran registrados<br>";
+            session_start();
+            $_SESSION["iniciar"] = true;
             echo "<a href=david-5-1.php>Opción Uno</a>";
             echo "<br>";
             echo "<a href=david-5-2.php>Opción Dos</a>";
-            $_SESSION["iniciar"] = true;
-        } else {
-            echo "Contraseña o usuario incorrectos";
-        }
-        */
 
-        if ($_REQUEST["user"] == $usuario_correcto && $_REQUEST["password"] == $contraseña_correcta) {
-            echo "<a name='op1' href=david-5-1.php>Opción Uno</a>";
-            echo "<br>";
-            echo "<a href=>Opción Dos</a>";
-            $_SESSION["iniciando"] = true;
-            if (isset($_REQUEST["op1"])) { {
-                    header("Location: david-5-2.php");
-                }
-            }
-        } else if (isset($_REQUEST["cerrar"])) {
-            session_unset($_SESSION["iniciando"]);
-            session_destroy();
+            // if ($_REQUEST["user"] == $usuario_correcto && password_verify($contraseña_correcta, $contraseña_introducida_hasheada)) {
+            // } 
+
         } else {
             echo "Contraseña o usuario incorrectos";
         }
@@ -61,11 +63,7 @@ $contraseña_correcta = "umiri";
     ?>
 
     <!-- y un botón o enlace de logout -->
-    <br>
 
-    <?php
-
-    ?>
 </body>
 
 </html>

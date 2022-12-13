@@ -12,34 +12,16 @@
     <?php
     session_start();
 
-    // if (isset($_REQUEST["enviar"])) {
-    //     $producto = $_REQUEST["producto"];
-    //     $resultado = $_REQUEST["resultado"];
-    //     $resultado = $resultado . $producto;
-    // } else {
-    //     $producto = "";
-    //     $resultado = "";
-    // }
-
-    // if (isset($_REQUEST["borrar"])) {
-    //     $resultado = "";
-    // }
-
-    // revisar solución    
-    session_start();
-    echo "<hr>";
     if (!isset($_SESSION["productos"])) {
         $_SESSION["productos"] = "";
     }
     if (isset($_POST["producto"]) && !empty($_POST["producto"])) {
-        $_SESSION["productos"] .= $_POST["producto"] . "<br>";
+        $_SESSION["productos"] .= $_POST["producto"] . "\n";
     }
     if (isset($_POST["borrar"])) {
         $_SESSION["productos"] = "";
         session_destroy();
     }
-
-
     ?>
 
     <form method=post>
@@ -51,7 +33,7 @@
         <input type="submit" name="borrar" value="Borrar todo" />
 
         <br><br>
-        <textarea name="resultado" cols="30" rows="10"><?php print "$resultado\n"; ?></textarea>
+        <textarea name="resultado" cols="30" rows="10"><?php echo $_SESSION["productos"] ?></textarea>
     </form>
 
 
