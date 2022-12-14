@@ -11,7 +11,7 @@ session_start();
 <body>
 
     <?php
-    $contraseña = "5fc3beb0116cf3fed5146adbb27d86d9";
+    $contraseña = "5fc3beb0116cf3fed5146adbb27d86d9"; // antezana
     $nombre = "angel";
     if ((isset($_POST["password"], $_POST["user"]) || isset($_SESSION["user"]))) {
         if (empty($_POST["password"])) {

@@ -1,6 +1,7 @@
 <?php
-?>
 
+
+?>
 
 <html>
 
@@ -23,43 +24,22 @@
 
     <!-- Mostrar solo si se ha facilitado ya usuario y contraseña correctos: -->
     <?php
-    $conexion = new PDO("mysql:dbname=login;host=localhost", "root", "");
-    $acentos = $conexion->query("SET NAMES 'utf8'");
-
-
-
-    // $usuario_correcto = "david";
-    // $contraseña_correcta = "umiri";
-    // $correcta_hasheada = password_hash($contraseña_correcta, PASSWORD_BCRYPT, ["cost" => 11]);
-
-    if (!isset($_REQUEST["password"])) {
-        $_REQUEST["password"] = "";
-    }
-
-    $contraseña_introducida = $_REQUEST["password"];
-    $contraseña_introducida_hasheada = password_hash($contraseña_introducida, PASSWORD_BCRYPT, ["cost" => 11]);
+    $usuario_correcto = "david";
+    // echo password_hash("umiri", PASSWORD_DEFAULT) . "\n";
+    $hash = '$2y$10$2VNp8XcciIDGvgabMSh/mOtUY5OTanrLiHjgbM3g8uh.W0mQ9zy3.';
 
     if (isset($_REQUEST["enviar"])) {
-
-        $query = "SELECT * FROM login WHERE username = '" . $_REQUEST["user"] . "' AND password = '" . $_REQUEST["password"] . "'";
-        $validando = $conexion->query($query);
-
-        if ($validando->rowCount() > 0) {
-
-            echo "El usuario y contraseña ya se encuentran registrados<br>";
+        if ($_REQUEST["user"] == $usuario_correcto && password_verify($_REQUEST["password"], $hash)) {
             session_start();
             $_SESSION["iniciar"] = true;
             echo "<a href=david-5-1.php>Opción Uno</a>";
             echo "<br>";
             echo "<a href=david-5-2.php>Opción Dos</a>";
-
-            // if ($_REQUEST["user"] == $usuario_correcto && password_verify($contraseña_correcta, $contraseña_introducida_hasheada)) {
-            // } 
-
         } else {
             echo "Contraseña o usuario incorrectos";
         }
     }
+
     ?>
 
     <!-- y un botón o enlace de logout -->

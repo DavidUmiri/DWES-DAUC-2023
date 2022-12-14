@@ -16,16 +16,9 @@ if (!isset($_SESSION["iniciar"])) {
 
     <!-- Si no ha sido validado el usuario y la contraseña deberá redirigir al login -->
 
-    <form action="" method="$_POST">
+    <form action="david-5-login.php" method=post>
         <input type="submit" value="Inicio" name="inicio">
     </form>
-
-    <?php
-    if (isset($_REQUEST["inicio"])) {
-        session_destroy();
-        header("Location: david-5-login.php");
-    }
-    ?>
 
 </body>
 
