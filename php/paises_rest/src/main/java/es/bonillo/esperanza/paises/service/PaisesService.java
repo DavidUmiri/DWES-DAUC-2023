@@ -13,57 +13,54 @@ import es.bonillo.esperanza.paises.repository.PaisRepository;
 
 @Service
 public class PaisesService {
-	
+
 	@Autowired
 	private PaisRepository repository;
-	
 
 	public List<Pais> getAll() {
 		List<Pais> paises = null;
-		
+
 		List<PaisEntity> paisesBBDD = repository.findAll();
-		if(paisesBBDD.size() > 0) {
+		if (paisesBBDD.size() > 0) {
 			paises = paisesBBDD.stream()
 					.map(PaisesService::mapToPais)
 					.collect(Collectors.toList());
-			
-		} 
+
+		}
 		return paises;
 	}
-	
+
 	public Pais getPais(String id) {
-		// TODO obtener la entidad con el id proporcionado y devolverla, transformandola en lo que espera el controlador.
+		// obtener la entidad con el id proporcionado y devolverla, transformandola en
+		// lo que espera el controlador.
 		// utiliza findById. Con getById puedes tener problemas.
 		return null;
 	}
-	
-	// TODO implementar metodo save, para llamarlo desde el POST del controlador
-	
-	
-	public boolean update(String id, Pais pais){
+
+	// implementar metodo save, para llamarlo desde el POST del controlador
+
+	public boolean update(String id, Pais pais) {
 		boolean result = false;
 
-		if(id != null && (pais.getId() == null || id.equals(pais.getId())) && repository.existsById(id)) {
+		if (id != null && (pais.getId() == null || id.equals(pais.getId())) && repository.existsById(id)) {
 			repository.save(mapToPaisEntity(pais));
 			result = true;
 		}
 
 		return result;
 	}
-	
-	public boolean delete(@PathVariable String id){
+
+	public boolean delete(@PathVariable String id) {
 		boolean result = false;
-		
-		if(id != null && repository.existsById(id)) {
+
+		if (id != null && repository.existsById(id)) {
 			repository.deleteById(id);
 			result = true;
 		}
 
 		return result;
 	}
-	
-	
-	
+
 	private static Pais mapToPais(PaisEntity entity) {
 		Pais pais = new Pais();
 		pais.setId(entity.getId());
@@ -72,7 +69,7 @@ public class PaisesService {
 		pais.setRutaFoto(entity.getRutaFoto());
 		return pais;
 	}
-	
+
 	private static PaisEntity mapToPaisEntity(Pais pais) {
 		PaisEntity paisEntity = new PaisEntity();
 		paisEntity.setId(pais.getId());
