@@ -1,0 +1,30 @@
+Reto fin de curso. Frameworks para el desarrollo backend.
+Requisitos de finalización
+Apertura: sábado, 4 de marzo de 2023, 00:00
+Cierre: martes, 14 de marzo de 2023, 20:00
+En este último reto del curso, opcional y en grupo para subir nota, os doy las siguientes posibilidades:
+
+1. Profundizar en el framework SpringBoot (o Spring) sobre todo en los temas que no hemos podido ver en clase, como consultas HQL, persistencia con bases de datos no relacionales (MongoDB) autenticación externa (OAUTH2, LDAP u otras, con JWT) y otros. Herramientas de generación y/o documentación automática de APIs RESTful como openAPI, swagger, etc. Testing con Selenium o Mockito ...
+
+2. Elegir otro framework y describirlo documentando una prueba de concepto que muestre cómo gestiona algunos de los temas que hemos visto con Spring, tal como:
+    - Modelo MVC: controlador: parámetros, URIs...
+    - Modelo MVC: plantillas, validación de formularios.
+    - Gestión de la sesión vs. API REST (sin sesión).
+    - Persistencia de datos. ORM.
+    - Autenticación y autorización.
+
+No hace falta hacer todos los puntos del 2, es una sugerencia, de hecho si elegís un framework específico para API RESTful no tendrán sentido los dos primeros.
+
+Pensad en vuestras FCTs, proyecto fin de ciclo, Skills, etc. a la hora de elegir framework.
+Los frameworks más conocidos de PHP son Laravel y Simphony.
+El framework más popular para backend en Javascript es Express.js.
+.NET es el framework de Microsoft para backend, también muy popular en ciertos entornos.
+
+De Python es muy conocido Django, pero hay muchos más, flask
+https://fastapi.tiangolo.com/async/
+https://hackr.io/blog/python-frameworks
+
+Si buscáis, encontraréis cientos
+https://medium.com/javarevisited/10-best-backend-frameworks-for-web-development-8d19e337f774
+
+FCTs en PHP, gestor de plantillas Smarty: https://es.wikipedia.org/wiki/Smarty

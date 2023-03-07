@@ -1,0 +1,83 @@
+Antes de usar descargar la librería Smarty:
+https://github.com/smarty-php/smarty/releases
+
+Example 2.1. Archivos de la libreria Smarty
+Smarty.class.php
+Smarty_Compiler.class.php
+Config_File.class.php
+debug.tpl
+/internals/*.php (all of them)
+/plugins/*.php (all of them)
+
+Smarty es un motor de plantillas para PHP, es decir, separa el código PHP, como lógica de negocios, del código HTML, como lógica de presentación, y genera contenidos web mediante la colocación de etiquetas Smarty en un documento. Se encuentra bajo la Licencia Pública General Reducida de GNU.
+
+Es común que en grandes proyectos el rol de diseñador gráfico y el de programador sean cubiertos por personas distintas, sin embargo la programación en PHP tiene la tendencia de combinar estas dos labores en una persona y dentro del mismo código, lo que trae consigo grandes dificultades a la hora de cambiar alguna parte del diseño de la página, pues se tiene que escarbar entre los scripts para modificar la presentación del contenido, Smarty tiene como objetivo solucionar este problema.
+
+Algunas de las características de Smarty:
+- Es extremamente rápido.
+- Es eficiente ya que puede interpretar el trabajo mas sucio.
+- No analiza gramaticalmente desde arriba el template, solo compila una vez.
+- El esta atento para solo recompilar los archivos de plantilla que fueron cambiados.
+- Usted puede crear funciones habituales y modificadores de variables customizados, de modo que el lenguaje de la platilla es altamente extensible.
+- Sintaxis de etiquetas delimitadoras para configuración de la plantilla, así lo puede usar {}, {{}}, <!--{}-->, etc.
+- Los construtoress if/elseif/else/endif son pasados por el interpretador de PHP, así la sintaxis de la expresión {if ...} puede ser compleja o simple de la forma que usted quiera.
+- Permite un anidamiento ilimitado de sections, ifs, etc.
+- Es posible incrustar directamente codigo PHP en los archivos de plantilla, aunque esto puede no ser necesario (no recomendado) dado que la herramienta se puede ajustar.
+- Soporte de caching incrustado
+- Fuentes de Plantilla absoluto
+- Funciones habituales de manipulación de cache
+- Arquitectura de Plugin
+
+Ejemplo:
+
+index.php
+
+    require_once("smarty/Smarty.class.php");
+
+    // Instanciar la clase de Smarty
+    $smarty = new Smarty();
+
+    // Configurar Smarty
+    $smarty->template_dir = "./templates/";
+    $smarty->compile_dir = "./templates_c/";
+    $smarty->config_dir = "./configs/";
+    $smarty->cache_dir = "./cache/";
+
+    // Establecer variables que se usarán en la plantilla
+    $smarty->assign("nombre", "José Manuel Pardo Pérez");
+    $smarty->assign("direccion", "C/ Alpes, 992");
+
+    // Mostrar la plantilla
+    $smarty->display("index.html");
+
+index.html
+
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <html lang="es">
+    <head>
+        <title>Información del Usuario</title>
+    </head>
+    <body>
+        <p>Información del Usuario:</p>
+        <p>
+        Nombre: {$nombre}<br />
+        Dirección: {$direccion}
+        </p>
+    </body>
+    </html>
+
+Salida HTML generada
+
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <html lang="es">
+    <head>
+        <title>Información del Usuario</title>
+    </head>
+    <body>
+        <p>Información del Usuario:</p>
+        <p>
+        Nombre: José Manuel Pardo Pérez<br />
+        Dirección: C/ Alpes, 992
+        </p>
+    </body>
+    </html>
