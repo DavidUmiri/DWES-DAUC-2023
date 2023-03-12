@@ -1,48 +1,55 @@
 <?php
+
+// Incluimos el archivo de configuración
 require_once('config.php');
 
-// inicia la sesión
+// Iniciamos la sesión
 session_start();
 
-// verifica si existe la sesión carrito, de lo contrario, crea una
+// Verificamos si existe la sesión carrito, sino la creamos
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = array();
 }
 
-// verifica si se ha enviado un formulario para agregar productos
+// Verificamos si se ha enviado un formulario para agregar productos
 if (isset($_POST['producto']) && isset($_POST['cantidad'])) {
+    // Obtenemos los datos del formulario
     $producto = $_POST['producto'];
     $cantidad = $_POST['cantidad'];
-
-    // comprueba que los campos no estén vacíos
+    // Verificamos que los campos no estén vacíos
     if ($producto !== "" && $cantidad !== "") {
-        // agrega el producto al carrito
+        // Agregamos el producto al carrito
         if (isset($_SESSION['carrito'][$producto])) {
+            // Si el producto ya existe en el carrito, sumamos la cantidad
             $_SESSION['carrito'][$producto] += $cantidad;
         } else {
+            // Si no existe, lo agregamos al carrito
             $_SESSION['carrito'][$producto] = $cantidad;
         }
     } else {
-        echo "<p>Producto o cantidad vacíos</p>";
+        // Mostramos una alerta si algún campo está vacío
+        echo "<script>alert('Producto o cantidad vacíos');</script>";
     }
 }
 
 
-// crea una instancia de Smarty y asigna las variables necesarias
+// Creamos una instancia de Smarty y asignamos la variable
 $smarty = new Smarty();
 $smarty->assign('carrito', $_SESSION['carrito']);
 
-// muestra el contenido del carrito
+// Mostramos un formulario para agregar productos al carrito
+$smarty->display('formulario.tpl');
+
+// Mostramos el contenido del carrito si no está vacío
 if (!empty($_SESSION['carrito'])) {
     $smarty->display('carrito.tpl');
 }
 
-// muestra un formulario para agregar productos al carrito
-$smarty->display('formulario.tpl');
-
-// boton para cerrar la sesión
+// Botón para cerrar la sesión
 if (isset($_POST['cerrar'])) {
+    // Limpiamos y destruimos la sesión
     session_unset();
     session_destroy();
+    // Redirigimos a la página del carrito
     header('Location: carrito.php');
 }
