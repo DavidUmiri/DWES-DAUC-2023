@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-03-12 15:04:09
+/* Smarty version 4.3.0, created on 2023-03-13 11:56:04
   from 'C:\wamp64\www\DWES-DAUC-2023\php\smarty_grupo\templates\carrito.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_640de9e92e1e98_54461058',
+  'unifunc' => 'content_640f0f54e111d5_86578014',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ff8b0a6e2c2606df2c1e80b41b20245b99484c0' => 
     array (
       0 => 'C:\\wamp64\\www\\DWES-DAUC-2023\\php\\smarty_grupo\\templates\\carrito.tpl',
-      1 => 1678633370,
+      1 => 1678707600,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_640de9e92e1e98_54461058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_640f0f54e111d5_86578014 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h1>Carrito de compras</h1>
 <table border="1">
     <tr>

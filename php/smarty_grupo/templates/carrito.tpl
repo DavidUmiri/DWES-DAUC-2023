@@ -1,3 +1,4 @@
+{* Tabla producto cantidad *}
 <h1>Carrito de compras</h1>
 <table border="1">
     <tr>

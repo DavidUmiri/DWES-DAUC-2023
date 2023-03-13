@@ -4,15 +4,15 @@ require_once('config.php');
 
 session_start();
 
-// Inicializa la variable de sesión 'tema' si no existe
+// Inicializamos la variable de sesión tema si no existe
 if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'light';
 }
 
-// Verifica si el usuario ha hecho clic en el botón de cambio de tema
+// Verificamos si el usuario ha hecho clic en el botón de cambio de tema
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cambiarTema'])) {
 
-    // Cambia el valor del tema
+    // Cambiamos el valor del tema
     if ($_SESSION['tema'] === 'light') {
         $_SESSION['tema'] = 'dark';
     } else {
