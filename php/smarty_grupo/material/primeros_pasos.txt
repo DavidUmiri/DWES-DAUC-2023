@@ -1,4 +1,5 @@
 1. Descargar Smarty y extraerlo
+
 2. Crear un archivo de configuración
     <?php
     require_once 'smarty/libs/Smarty.class.php';
@@ -9,5 +10,7 @@
     $smarty->setCacheDir('cache');
     $smarty->setConfigDir('configs');
     ?>
+
 3. Crear una carpeta llamada templates y agregar un index.tpl
+
 4. Crear nuestros archivos PHP en la raíz del proyecto

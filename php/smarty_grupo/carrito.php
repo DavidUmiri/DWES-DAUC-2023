@@ -13,11 +13,14 @@ if (!isset($_SESSION['carrito'])) {
 
 // Verificamos si se ha enviado un formulario para agregar productos
 if (isset($_POST['producto']) && isset($_POST['cantidad'])) {
+
     // Obtenemos los datos del formulario
     $producto = $_POST['producto'];
     $cantidad = $_POST['cantidad'];
+
     // Verificamos que los campos no estén vacíos
     if ($producto !== "" && $cantidad !== "") {
+
         // Agregamos el producto al carrito
         if (isset($_SESSION['carrito'][$producto])) {
             // Si el producto ya existe en el carrito, sumamos la cantidad
@@ -38,11 +41,11 @@ $smarty = new Smarty();
 $smarty->assign('carrito', $_SESSION['carrito']);
 
 // Mostramos un formulario para agregar productos al carrito
-$smarty->display('formulario.tpl');
+$smarty->display('carrito_formulario.tpl');
 
 // Mostramos el contenido del carrito si no está vacío
 if (!empty($_SESSION['carrito'])) {
-    $smarty->display('carrito.tpl');
+    $smarty->display('carrito_compra.tpl');
 }
 
 // Botón para cerrar la sesión

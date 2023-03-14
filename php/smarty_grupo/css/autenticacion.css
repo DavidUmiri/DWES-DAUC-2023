@@ -1,0 +1,53 @@
+/* Estilos para el cuerpo de la página */
+body {
+    background-color: lightseagreen;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el encabezado */
+h1 {
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Estilos para el formulario */
+form {
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: lightskyblue;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+}

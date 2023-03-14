@@ -25,4 +25,4 @@ $smarty = new Smarty();
 $smarty->assign('tema', $_SESSION['tema']);
 
 // Mostramos un formulario para agregar productos al carrito
-$smarty->display('plantilla.tpl');
+$smarty->display('cambiar_tema.tpl');
