@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurante</title>
+</head>
+
+<body>
+    <h1>Bienvenidos al Restaurante</h1>
+    <p>En nuestro restaurante podrás disfrutar de los mejores platos de la cocina local.</p>
+    <p>Reserva una mesa o realiza un pedido a domicilio a través de nuestra página web.</p>
+    <a th:href="@{/reservar}" class="btn btn-primary">Reservar una mesa</a>
+    <a th:href="@{/pedir}" class="btn btn-primary">Realizar un pedido</a>
+</body>
+
+</html>
